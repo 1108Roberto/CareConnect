@@ -1,38 +1,37 @@
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager
-from flask_migrate import Migrate
+from flask import Flask, render_template, request, redirect
+from app.models import db, User
+from app.config import Config
 
-db = SQLAlchemy()
-login_manager = LoginManager()
-migrate = Migrate()
+app = Flask(__name__)
+app.config.from_object(Config)
+db.init_app(app)
 
 
-def create_app(config_class=None) -> Flask:
-    app = Flask(__name__)
-    app.config.from_mapping(
-        SECRET_KEY="young thug in 2012",
-        SQLALCHEMY_DATABASE_URI="postgresql://user:pass@db:5432/appdb",
-        SQLALCHEMY_TRACK_MODIFICATIONS=False,
-    )
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "POST":
+        email = request.form["email"]
+        password = request.form["password"]
+        role = request.form["role"]
 
-    # Initialize extensions
-    db.init_app(app)
-    login_manager.init_app(app)
-    migrate.init_app(app, db)
+        new_user = User(email=email, password=password, role=role)
+        db.session.add(new_user)
+        db.session.commit()
 
-    # Register blueprints
-    from app.routes import main
-    from app.auth import bp as auth_bp
-    from app.patient import bp as patient_bp
+        return redirect("/login")
+    return render_template("register.html")
 
-    app.register_blueprint(main)
-    app.register_blueprint(auth_bp)
-    app.register_blueprint(patient_bp)
 
-    # Simple route for testing
-    @app.route("/test")
-    def test_route():
-        return "Works!"
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        email = request.form["email"]
+        password = request.form["password"]
+        user = User.query.filter_by(email=email, password=password).first()
+        if user:
+            return f"Logged in as {user.role}"
+    return render_template("login.html")
 
-    return app
+
+if __name__ == "__main__":
+    app.run(debug=True)

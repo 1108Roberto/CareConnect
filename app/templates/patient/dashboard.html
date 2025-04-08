@@ -1,8 +1,0 @@
-{% extends "base.html" %} {% block content %}
-<h1>Patient Dashboard</h1>
-<nav class="patient-menu">
-  <a href="{{ url_for('patient.appointments') }}">Appointments</a>
-  <a href="{{ url_for('patient.account_status') }}">Account</a>
-  <a href="{{ url_for('patient.documents') }}">Documents</a>
-</nav>
-{% endblock %}

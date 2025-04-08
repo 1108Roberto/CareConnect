@@ -1,27 +1,18 @@
-this shit doesnt even run lmfao good luck
-
 read the [TODO](./TODO.md) file to see what's missing
 
-#### Migration Commands (Run these once):
+install the required packages:
 
 ```bash
-flask db init          # Initialize migrations
-flask db migrate       # Create initial migration
-flask db upgrade       # Apply to database
+pip install -r ./env/requirements.txt
 ```
 
-#### Key Notes:
+once that's done, run flask:
 
-- The password handling is intentionally insecure – we'll add proper hashing (like bcrypt) later
-- All pages inherit from base.html for consistent navigation
-- CSS uses simple grid layout for research projects
-- Migration system is ready for future schema changes
+```bash
+flask run
+```
 
-#### Next Steps:
+open your local host and test the following **working** paths:
 
-1. Run the migrations
-2. Test the public pages by visiting:
-   - `/` (Home, aka `index.html`)
-   - `/about` (todo)
-   - /research
-3. Try registration/login flow
+- http://localhost:5000/register
+- http://localhost:5000/login

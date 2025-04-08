@@ -16,6 +16,7 @@
     "reportUnusedClass": "information",
     "reportMissingParameterType": "information",
     "reportUnknownParameterType": "information",
+    "reportCallIssue": "information",
     "reportSelfClsParameterName": "warning",
     "reportUndefinedVariable": "warning",
     "reportUnusedImport": "warning",
