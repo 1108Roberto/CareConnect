@@ -1,0 +1,12 @@
+{% extends "base.html" %} {% block content %}
+<h2>Your Appointments</h2>
+<a href="{{ url_for('patient.new_appointment') }}">New Appointment</a>
+
+{% for appt in appointments %}
+<div class="appointment">
+  <p>Doctor: {{ appt.doctor.user.username }}</p>
+  <p>When: {{ appt.scheduled_time }}</p>
+  <p>Status: {{ appt.status }}</p>
+  <a href="{{ url_for('patient.cancel_appointment', id=appt.id) }}">Cancel</a>
+</div>
+{% endfor %} {% endblock %}

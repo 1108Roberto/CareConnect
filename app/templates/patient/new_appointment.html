@@ -1,0 +1,13 @@
+{% extends "base.html" %} {% block content %}
+<h2>New Appointment</h2>
+<form method="POST">
+  {{ form.hidden_tag() }}
+  <div>{{ form.doctor.label }} {{ form.doctor() }}</div>
+  <div>{{ form.scheduled_time.label }} {{ form.scheduled_time() }}</div>
+  <div>
+    {{ form.reason.label }}<br />
+    {{ form.reason(rows=4) }}
+  </div>
+  {{ form.submit() }}
+</form>
+{% endblock %}

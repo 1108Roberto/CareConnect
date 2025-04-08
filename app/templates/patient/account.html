@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% block content %}
+<h2>Account Status</h2>
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Amount</th>
+    <th>Status</th>
+  </tr>
+  {% for payment in payments %}
+  <tr>
+    <td>{{ payment.transaction_date }}</td>
+    <td>${{ payment.amount }}</td>
+    <td>{{ payment.status }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

@@ -19,6 +19,9 @@
       {% endif %}
       <a href="/about">About</a>
       <a href="/research">Research</a>
+      {% if current_user.is_authenticated and current_user.role == 'Patient' %}
+      <a href="{{ url_for('patient.dashboard') }}">Dashboard</a>
+      {% endif %}
     </nav>
     <div class="content">{% block content %}{% endblock %}</div>
   </body>

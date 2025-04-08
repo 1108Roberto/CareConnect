@@ -1,4 +1,4 @@
-this shit might not even run shoutout deepseek
+this shit doesnt even run lmfao good luck
 
 read the [TODO](./TODO.md) file to see what's missing
 
