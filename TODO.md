@@ -1,0 +1,3 @@
+- complete `app/templates/register` & `app/templates/about`
+- add password handling because is unsafe as fuck
+- improve the html and the css i guess?
