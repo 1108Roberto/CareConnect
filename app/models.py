@@ -26,4 +26,4 @@ class Doctor(db.Model):
     specialty = db.Column(db.String(100))
 
 
-# Add other models later (Appointments, MedicalRecords, etc.)
+# TODO: Add other models later (Appointments, MedicalRecords, etc.)
