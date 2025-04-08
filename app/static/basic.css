@@ -1,0 +1,35 @@
+/* app/static/basic.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+nav {
+  background: #f0f0f0;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+nav a {
+  margin-right: 15px;
+  text-decoration: none;
+  color: #333;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.project {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 4px;
+}
