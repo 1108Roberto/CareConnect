@@ -1,18 +1,18 @@
 ![Structure](./env/structure.png)
 
-### Phase 1: Foundation
+### Phase 1: Foundation (**_FINISHED_**)
 
 - **Database Design:** Based on the flowchart, design your database schema. You'll likely need tables for:
   - ~~`Users` (with roles: Patient, Doctor, Admin)~~
   - ~~`Patients` (linking to Users, storing demographic info)~~
   - ~~`Doctors` (linking to Users, storing specialty, availability)~~
-  - `Appointments` (linking Patients, Doctors, storing date/time, status, reason)
-  - `MedicalRecords` (linking to Patients, storing history, current cases, reports)
-  - `ResearchProjects` (storing details, status, associated reports)
-  - `Documents` (storing personal/clinical docs, linked to users)
-  - `Payments` or `AccountStatements` (linking to Patients, storing consultation costs, payment status)
-  - `Alerts` (storing messages, recipients, status)
-  - Potentially tables for `Specialties`, `Schedules`, `Attendance`, etc.
+  - ~~`Appointments` (linking Patients, Doctors, storing date/time, status, reason)~~
+  - ~~`MedicalRecords` (linking to Patients, storing history, current cases, reports)~~
+  - ~~`ResearchProjects` (storing details, status, associated reports)~~
+  - ~~`Documents` (storing personal/clinical docs, linked to users)~~
+  - ~~`Payments` or `AccountStatements` (linking to Patients, storing consultation costs, payment status)~~
+  - ~~`Alerts` (storing messages, recipients, status)~~
+  - ~~Potentially tables for `Specialties`, `Schedules`, `Attendance`, etc.~~
 
 ### Phase 2: Core Functionality - Authentication and User Portals
 
