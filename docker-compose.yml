@@ -2,9 +2,32 @@ services:
   db:
     image: mariadb:latest
     environment:
-      MYSQL_ROOT_PASSWORD: Admin123
-      MYSQL_DATABASE: CareConnect
+      MYSQL_DATABASE: care_connect
+      MYSQL_USER: care_connect_user
+      MYSQL_PASSWORD: Admin123
+      MYSQL_ROOT_PASSWORD: Adminroot123
+    volumes:
+      - mariadb_data:/var/lib/mysql
     ports:
       - "3306:3306"
+
+  web:
+    build: .
+    command: >
+      bash -c "python manage.py makemigrations core &&
+      python manage.py migrate &&
+      python manage.py runserver 0.0.0.0:8000"
     volumes:
-      - ./data:/var/lib/mysql
+      - .:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_HOST=db
+      - DB_NAME=care_connect
+      - DB_USER=care_connect_user
+      - DB_PASSWORD=Admin123
+    depends_on:
+      - db
+
+volumes:
+  mariadb_data:

@@ -1,4 +1,4 @@
-**Phase 1: Planning & Environment Setup**
+### **Phase 1: Planning & Environment Setup**
 
 1.  **Refine Requirements:** Although the diagram gives a good overview, flesh out the specific details: What exact fields are needed for clients, policies, and claims? What actions can users perform on each screen?
 2.  **Choose Technology Stack:**
@@ -9,7 +9,7 @@
     - Install MariaDB Server.
     - Install a database management tool (optional but helpful, e.g., DBeaver, HeidiSQL, phpMyAdmin).
 
-**Phase 2: Database Development (MariaDB)**
+### **Phase 2: Database Development (MariaDB)**
 
 1.  **Design the Database Schema:** Based on the screens, identify the core data entities: Users, Clients, Policies, Claims.
     - **Users Table:** To handle login (`users`).
@@ -59,39 +59,39 @@
 
 3.  **Create the Database and Tables in MariaDB:**
 
-    - Connect to your MariaDB server using a command-line client or GUI tool.
-    - Create the database:
-      ```sql
-      CREATE DATABASE your_app_db_name CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-      ```
-    - Select the database:
-      ```sql
-      USE your_app_db_name;
-      ```
-    - Execute `CREATE TABLE` SQL statements for each table designed above. Example for `clients`:
+- Connect to your MariaDB server using a command-line client or GUI tool.
+- Create the database:
+  ```sql
+  CREATE DATABASE your_app_db_name CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+  ```
+- Select the database:
+  ```sql
+  USE your_app_db_name;
+  ```
+- Execute `CREATE TABLE` SQL statements for each table designed above. Example for `clients`:
 
-      ```sql
-      CREATE TABLE clients (
-          client_id INT AUTO_INCREMENT PRIMARY KEY,
-          name VARCHAR(255) NOT NULL,
-          national_id VARCHAR(50) UNIQUE,
-          address TEXT,
-          phone VARCHAR(30),
-          email VARCHAR(255) UNIQUE,
-          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-          updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-      ) ENGINE=InnoDB; -- Specify InnoDB engine for foreign key support
+  ```sql
+  CREATE TABLE clients (
+      client_id INT AUTO_INCREMENT PRIMARY KEY,
+      name VARCHAR(255) NOT NULL,
+      national_id VARCHAR(50) UNIQUE,
+      address TEXT,
+      phone VARCHAR(30),
+      email VARCHAR(255) UNIQUE,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  ) ENGINE=InnoDB; -- Specify InnoDB engine for foreign key support
 
-      -- Add other CREATE TABLE statements here for policies, claims, users
-      -- Remember to include FOREIGN KEY constraints
-      ALTER TABLE policies ADD CONSTRAINT fk_policies_client FOREIGN KEY (client_id) REFERENCES clients(client_id);
-      ALTER TABLE claims ADD CONSTRAINT fk_claims_policy FOREIGN KEY (policy_id) REFERENCES policies(policy_id);
-      -- Add other constraints as needed
-      ```
+  -- Add other CREATE TABLE statements here for policies, claims, users
+  -- Remember to include FOREIGN KEY constraints
+  ALTER TABLE policies ADD CONSTRAINT fk_policies_client FOREIGN KEY (client_id) REFERENCES clients(client_id);
+  ALTER TABLE claims ADD CONSTRAINT fk_claims_policy FOREIGN KEY (policy_id) REFERENCES policies(policy_id);
+  -- Add other constraints as needed
+  ```
 
 4.  **Populate with Test Data (Optional):** Add some sample data to test your application later.
 
-**Phase 3: Backend Development**
+### **Phase 3: Backend Development**
 
 1.  **Set up Project Structure:** Organize your backend code (e.g., controllers/views, models, database connection logic).
 2.  **Database Connection:** Write code to connect your backend application to the MariaDB database.
@@ -104,7 +104,7 @@
       - Fetch details for a specific policy or claim.
     - **Data Modification (If needed):** Functions/endpoints to create or update records (ensure proper authorization).
 
-**Phase 4: Frontend Development (HTML, CSS, JavaScript)**
+### **Phase 4: Frontend Development (HTML, CSS, JavaScript)**
 
 1.  **Create HTML Structure (`.html` files):** Based on the diagram, create the HTML for each screen. Let's focus on the "Client Screen":
 
@@ -233,7 +233,7 @@
     - **Handle User Actions:** Add event listeners to buttons (Logout, View Details) and links. For example, clicking a "View Details" link in the policies table might fetch detailed policy data and either display it in a modal or navigate to the Policy Detail page.
     - **Handle Forms:** Manage form submissions (like the Login form).
 
-**Phase 5: Integration & Testing**
+### **Phase 5: Integration & Testing**
 
 1.  **Connect Frontend & Backend:** Ensure the JavaScript `Workspace` calls correctly target your backend API endpoints and handle the responses (both success and errors).
 2.  **Testing:**
@@ -242,7 +242,7 @@
     - **End-to-End Tests:** Simulate user flows (login, view client, view policy details, etc.).
     - **Cross-Browser Testing:** Test in different web browsers.
 
-**Phase 6: Deployment**
+### **Phase 6: Deployment**
 
 1.  **Choose Hosting:** Select a hosting provider that supports your chosen technology stack (backend language, MariaDB database).
 2.  **Configure Server:** Set up the web server, database, and application environment on the hosting server.
