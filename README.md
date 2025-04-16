@@ -2,23 +2,30 @@
 
 1. **Start the Docker containers** for MariaDB:
 
-```bash
-docker-compose up -d
-```
+   ```bash
+   docker-compose up -d
+   ```
 
-2. **Install dependencies**:
+2. **Initialize the Database**:
+   You need to apply the SQL schema from `db/init.sql` to your database. You can do this using a MySQL client or by running:
 
-```bash
-npm install bcrypt jsonwebtoken mysql2
-```
+   ```bash
+   docker exec -i care-connect_db_1 mysql -uroot -pAdminroot123 < db/init.sql
+   ```
 
-3. **Run the development server**:
+3. **Install dependencies**:
 
-```bash
-npm run dev
-```
+   ```bash
+   npm install
+   ```
 
-4. **Access the application**:
+4. **Run the development server**:
+
+   ```bash
+   npm run dev
+   ```
+
+5. **Access the application**:
    Open your browser and navigate to `http://localhost:3000`
 
 ## Testing the Application
