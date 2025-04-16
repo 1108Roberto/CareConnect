@@ -3,6 +3,7 @@ import { query } from "@/lib/db";
 import bcrypt from "bcrypt";
 import { cookies } from "next/headers";
 import { sign } from "jsonwebtoken";
+import type { JWTPayload, DatabaseResult } from "@/types";
 
 const JWT_SECRET = process.env.JWT_SECRET || "your-secret-key";
 
@@ -28,7 +29,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const user = users[0] as any;
+    const user = users[0] as DatabaseResult;
 
     // Compare passwords
     const passwordMatch = await bcrypt.compare(password, user.password);
@@ -41,17 +42,15 @@ export async function POST(request: Request) {
     }
 
     // Create JWT token
-    const token = sign(
-      {
-        id: user.id,
-        cedula: user.cedula,
-        nombre: user.nombre,
-        apellido: user.apellido,
-        email: user.email,
-      },
-      JWT_SECRET,
-      { expiresIn: "1d" }
-    );
+    const payload: JWTPayload = {
+      id: user.id,
+      cedula: user.cedula,
+      nombre: user.nombre,
+      apellido: user.apellido,
+      email: user.email,
+    };
+
+    const token = sign(payload, JWT_SECRET, { expiresIn: "1d" });
 
     // Set cookie
     (await cookies()).set({

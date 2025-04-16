@@ -2,9 +2,8 @@ import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { query } from "@/lib/db";
 import bcrypt from "bcrypt";
-import { verify } from "jsonwebtoken";
-
-const JWT_SECRET = process.env.JWT_SECRET || "your-secret-key";
+import { verifyToken } from "@/lib/jwt";
+import type { DatabaseResult } from "@/types";
 
 export async function POST(request: Request) {
   try {
@@ -16,10 +15,8 @@ export async function POST(request: Request) {
     }
 
     // Verify token
-    let decoded;
-    try {
-      decoded = verify(token, JWT_SECRET) as any;
-    } catch (error) {
+    const decoded = verifyToken(token);
+    if (!decoded) {
       return NextResponse.json({ error: "Token inválido" }, { status: 401 });
     }
 
@@ -44,7 +41,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const user = users[0] as any;
+    const user = users[0] as DatabaseResult;
 
     // Verify current password
     const passwordMatch = await bcrypt.compare(currentPassword, user.password);
@@ -70,8 +67,8 @@ export async function POST(request: Request) {
       { message: "Contraseña actualizada exitosamente" },
       { status: 200 }
     );
-  } catch (error) {
-    console.error("Error changing password:", error);
+  } catch (err) {
+    console.error("Error changing password:", err);
     return NextResponse.json(
       { error: "Error al cambiar contraseña" },
       { status: 500 }

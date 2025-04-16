@@ -1,5 +1,7 @@
 ## Running the Application
 
+NOTE: Docker might not work yet. Instead, run the npm commands.
+
 1. **Start the Docker containers** for MariaDB:
 
    ```bash
@@ -7,7 +9,7 @@
    ```
 
 2. **Initialize the Database**:
-   You need to apply the SQL schema from `db/init.sql` to your database. You can do this using a MySQL client or by running:
+   You need to apply the SQL schema from `db/init.sql` to your database. This can be done using a MySQL client or by running:
 
    ```bash
    docker exec -i care-connect_db_1 mysql -uroot -pAdminroot123 < db/init.sql
@@ -26,7 +28,7 @@
    ```
 
 5. **Access the application**:
-   Open your browser and navigate to `http://localhost:3000`
+   Open your browser and navigate to `http://localhost:3000`.
 
 ## Testing the Application
 
@@ -35,4 +37,4 @@ You can test the application with the following credentials:
 - **Cedula**: 123456789
 - **Password**: password123
 
-For password reset functionality, the token will be displayed in the console since we're running locally without email capabilities.
+For password reset functionality, the token will be displayed in the console, as the application is running locally without email capabilities.

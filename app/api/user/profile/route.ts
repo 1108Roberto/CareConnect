@@ -1,12 +1,10 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { query } from "@/lib/db";
-import { verify } from "jsonwebtoken";
-
-const JWT_SECRET = process.env.JWT_SECRET || "your-secret-key";
+import { verifyToken } from "@/lib/jwt";
 
 // Get user profile
-export async function GET(request: Request) {
+export async function GET() {
   try {
     // Get token from cookies
     const token = (await cookies()).get("auth_token")?.value;
@@ -16,10 +14,8 @@ export async function GET(request: Request) {
     }
 
     // Verify token
-    let decoded;
-    try {
-      decoded = verify(token, JWT_SECRET) as any;
-    } catch (error) {
+    const decoded = verifyToken(token);
+    if (!decoded) {
       return NextResponse.json({ error: "Token inválido" }, { status: 401 });
     }
 
@@ -39,8 +35,8 @@ export async function GET(request: Request) {
     const user = users[0];
 
     return NextResponse.json({ user }, { status: 200 });
-  } catch (error) {
-    console.error("Error getting user profile:", error);
+  } catch (err) {
+    console.error("Error getting user profile:", err);
     return NextResponse.json(
       { error: "Error al obtener perfil de usuario" },
       { status: 500 }
@@ -59,10 +55,8 @@ export async function PUT(request: Request) {
     }
 
     // Verify token
-    let decoded;
-    try {
-      decoded = verify(token, JWT_SECRET) as any;
-    } catch (error) {
+    const decoded = verifyToken(token);
+    if (!decoded) {
       return NextResponse.json({ error: "Token inválido" }, { status: 401 });
     }
 
@@ -101,8 +95,8 @@ export async function PUT(request: Request) {
       { message: "Perfil actualizado exitosamente" },
       { status: 200 }
     );
-  } catch (error) {
-    console.error("Error updating user profile:", error);
+  } catch (err) {
+    console.error("Error updating user profile:", err);
     return NextResponse.json(
       { error: "Error al actualizar perfil de usuario" },
       { status: 500 }

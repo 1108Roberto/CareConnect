@@ -1,4 +1,5 @@
 import mysql from "mysql2/promise";
+import type { QueryResult } from "@/types";
 
 // Database connection configuration
 const dbConfig = {
@@ -13,10 +14,13 @@ const dbConfig = {
 const pool = mysql.createPool(dbConfig);
 
 // Helper function to execute SQL queries
-export async function query(sql: string, params: any[] = []) {
+export async function query(
+  sql: string,
+  params: unknown[] = []
+): Promise<QueryResult> {
   try {
     const [results] = await pool.execute(sql, params);
-    return results;
+    return results as QueryResult;
   } catch (error) {
     console.error("Database query error:", error);
     throw error;
@@ -24,7 +28,7 @@ export async function query(sql: string, params: any[] = []) {
 }
 
 // Initialize database connection
-export async function testConnection() {
+export async function testConnection(): Promise<boolean> {
   try {
     const connection = await pool.getConnection();
     console.log("Database connection successful");
