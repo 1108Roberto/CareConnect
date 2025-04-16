@@ -1,7 +1,15 @@
-FROM python:3.10.11
-ENV PYTHONUNBUFFERED 1
-RUN mkdir /app
+FROM node:22-alpine
+
 WORKDIR /app
-COPY requirements.txt .
-RUN pip install -r requirements.txt
+
+COPY package*.json ./
+
+RUN npm install
+
 COPY . .
+
+RUN npm run build
+
+EXPOSE 3000
+
+CMD ["npm", "start"]

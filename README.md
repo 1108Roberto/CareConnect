@@ -1,28 +1,31 @@
-## Testing the Integration:
+## Running the Application
 
-1. **Start Development Server**
+1. **Start the Docker containers** for MariaDB:
 
 ```bash
-docker-compose up --build
+docker-compose up -d
 ```
 
-2. **Access in Browser**
+2. **Install dependencies**:
 
+```bash
+npm install bcrypt jsonwebtoken mysql2
 ```
-http://localhost:8000/clients/1/
+
+3. **Run the development server**:
+
+```bash
+npm run dev
 ```
 
-3. **Expected Behavior**
+4. **Access the application**:
+   Open your browser and navigate to `http://localhost:3000`
 
-- Shows loading spinner initially
-- Gradually populates client details
-- Loads policies and claims tables
-- Interactive buttons with hover states
+## Testing the Application
 
-**Next Steps Recommendation:**
-Should we implement:
+You can test the application with the following credentials:
 
-1. Search functionality with API endpoints
-2. Policy detail modal implementation
-3. Authentication flow integration
-4. Form handling for creating new clients/policies?
+- **Cedula**: 123456789
+- **Password**: password123
+
+For password reset functionality, the token will be displayed in the console since we're running locally without email capabilities.

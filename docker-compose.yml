@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   db:
     image: mariadb:latest
@@ -13,14 +15,8 @@ services:
 
   web:
     build: .
-    command: >
-      bash -c "python manage.py makemigrations core &&
-      python manage.py migrate &&
-      python manage.py runserver 0.0.0.0:8000"
-    volumes:
-      - .:/app
     ports:
-      - "8000:8000"
+      - "3000:3000"
     environment:
       - DB_HOST=db
       - DB_NAME=care_connect
@@ -28,6 +24,9 @@ services:
       - DB_PASSWORD=Admin123
     depends_on:
       - db
+    volumes:
+      - .:/app
+      - /app/node_modules
 
 volumes:
   mariadb_data:
