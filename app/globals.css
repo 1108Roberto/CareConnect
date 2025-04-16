@@ -1,6 +1,6 @@
 @import "tailwindcss";
-@tailwind base;
-@tailwind components;
+
+@import "tailwindcss/preflight";
 @tailwind utilities;
 
 @layer base {
@@ -55,6 +55,6 @@
     @apply border-0;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-white text-black dark:bg-gray-900 dark:text-white;
   }
 }

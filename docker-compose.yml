@@ -1,13 +1,6 @@
-version: '3.8'
-
 services:
   db:
     image: mariadb:latest
-    environment:
-      MYSQL_DATABASE: care_connect
-      MYSQL_USER: care_connect_user
-      MYSQL_PASSWORD: Admin123
-      MYSQL_ROOT_PASSWORD: Adminroot123
     volumes:
       - mariadb_data:/var/lib/mysql
     ports:
@@ -17,11 +10,6 @@ services:
     build: .
     ports:
       - "3000:3000"
-    environment:
-      - DB_HOST=db
-      - DB_NAME=care_connect
-      - DB_USER=care_connect_user
-      - DB_PASSWORD=Admin123
     depends_on:
       - db
     volumes:

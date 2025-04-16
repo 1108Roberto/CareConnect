@@ -42,5 +42,14 @@
   },
   "author": "at-sso",
   "license": "Apache-2.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/at-sso/CareConnect.git"
+  },
+  "bugs": {
+    "url": "https://github.com/at-sso/CareConnect/issues"
+  },
+  "homepage": "https://github.com/at-sso/CareConnect#readme",
   "description": ""
 }
