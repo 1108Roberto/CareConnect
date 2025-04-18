@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Especialidades Médicas</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #f8f8f8;
+    }
+
+    header img {
+      height: 60px;
+    }
+
+    .titulo-con-fondo {
+      background-image: url('fondo-titulo.jpg'); /* Cambia esto por tu imagen */
+      background-size: cover;
+      background-position: center;
+      padding: 50px 20px;
+      text-align: center;
+      color: white;
+    }
+
+    .titulo-con-fondo h1 {
+      background-color: rgba(0, 0, 0, 0.5);
+      display: inline-block;
+      padding: 10px 30px;
+      border-radius: 10px;
+    }
+
+    hr {
+      border: none;
+      border-top: 2px solid #ccc;
+      margin: 40px auto;
+      width: 80%;
+    }
+
+    .especialidades {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 50px; /* Más separación entre cuadros */
+      padding: 30px;
+    }
+
+    .especialidad {
+      width: 200px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      background-color: #f9f9f9;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    .especialidad img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .nombre {
+      margin-top: 10px;
+      color: #007BFF;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .info {
+      display: none;
+      margin-top: 10px;
+      font-size: 0.9em;
+      color: #333;
+    }
+
+  .volver {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 1em;
+    }
+
+    .volver:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo -->
+  <header>
+    <img src="https://raw.githubusercontent.com/at-sso/CareConnect/513c0ad04400525a225390ea5c612565814dc077/static/images/logo.png" alt="Logo" alt="Logo"> <!-- Reemplaza "logo.png" con tu imagen -->
+  </header>
+
+  <!-- Título con fondo -->
+  <div class="titulo-con-fondo">
+    <h1>Especialidades Médicas</h1>
+  </div>
+
+  <!-- Línea separadora -->
+  <hr>
+
+  <!-- Especialidades: Primer grupo -->
+  <div class="especialidades">
+    <div class="especialidad">
+      <img src="https://th.bing.com/th/id/R.364f15c12797d7d9438c1435a8439268?rik=HGuY9taD2GQlTw&pid=ImgRaw&r=0" alt="Cardiología">
+      <div class="nombre" onclick="mostrarInfo(0)">Cardiología</div>
+      <div class="info">La cardiología se encarga del estudio del corazón y el sistema circulatorio.</div>
+      <div class="precio">$100</div>
+    </div>
+    <div class="especialidad">
+      <img src="https://cdn.shopify.com/s/files/1/0580/8147/6797/files/Hauttyp_kosmetik.jpg?v=1630345611" alt="Dermatología">
+      <div class="nombre" onclick="mostrarInfo(1)">Dermatología</div>
+      <div class="info">La dermatología trata las enfermedades de la piel, cabello y uñas.</div>
+      <div class="precio">$90</div>
+    </div>
+    <div class="especialidad">
+      <img src="https://th.bing.com/th/id/OIP.7rs8s7jrLZIjfG-CzI-YVQHaFN?w=243&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Pediatría">
+      <div class="nombre" onclick="mostrarInfo(2)">Pediatría</div>
+      <div class="info">La pediatría se especializa en la salud de los niños y adolescentes.</div>
+      <div class="precio">$80</div>
+    </div>
+    <div class="especialidad">
+      <img src="https://th.bing.com/th/id/OIP.g_Rqp2KeFbfxLQwBFuunpQHaE8?w=306&h=204&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" alt="Neurología">
+      <div class="nombre" onclick="mostrarInfo(3)">Neurología</div>
+      <div class="info">La neurología estudia el sistema nervioso y sus trastornos.</div>
+      <div class="precio">$130</div>
+    </div>
+  </div>
+
+  <!-- Especialidades: Segundo grupo -->
+  <div class="especialidades">
+    <div class="especialidad">
+      <img src="https://th.bing.com/th/id/OIP.YgoccdBv1o1DX0RAZAbqMAHaFN?rs=1&pid=ImgDetMain" alt="Gastroenterología">
+      <div class="nombre" onclick="mostrarInfo(4)">Gastroenterología</div>
+      <div class="info">Se enfoca en el sistema digestivo y sus trastornos.</div>
+      <div class="precio">$110</div>
+    </div>
+    <div class="especialidad">
+      <img src="https://th.bing.com/th/id/OIP.GlOczrEEeeCKoy5IaQWH7AHaHa?w=178&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Oncología">
+      <div class="nombre" onclick="mostrarInfo(5)">Oncología</div>
+      <div class="info">Estudia y trata el cáncer y los tumores.</div>
+      <div class="precio">$150</div>
+    </div>
+    <div class="especialidad">
+      <img src="https://th.bing.com/th/id/OIP.hWpO4z0weBLF8V9Yve1_yQHaFm?rs=1&pid=ImgDetMain" alt="Oftalmología">
+      <div class="nombre" onclick="mostrarInfo(6)">Oftalmología</div>
+      <div class="info">Se especializa en el diagnóstico y tratamiento de enfermedades de los ojos.</div>
+      <div class="precio">$85</div>
+    </div>
+    <div class="especialidad">
+      <img src="https://th.bing.com/th/id/OIP.PaYqFARHtKYFJXMDTgkuGwHaE8?rs=1&pid=ImgDetMain" alt="Psiquiatría">
+      <div class="nombre" onclick="mostrarInfo(7)">Psiquiatría</div>
+      <div class="info">Se ocupa de la salud mental y trastornos del comportamiento.</div>
+      <div class="precio">$100</div>
+    </div>
+  </div>
+
+ <!-- Botón de regreso -->
+  <a class="volver" href="index.html">Volver a la página principal</a>
+
+
+  <!-- Script para mostrar/ocultar información -->
+  <script>
+    function mostrarInfo(index) {
+      const infos = document.querySelectorAll('.info');
+      infos[index].style.display = infos[index].style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+
+</body>
+</html>
